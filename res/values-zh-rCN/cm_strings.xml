@@ -93,4 +93,16 @@
     <string name="insert_contact_info_positive_button">插入</string>
     <string name="label_mms_push">彩信推送</string>
     <string name="desc_mms_push">将彩信从发件箱推送到移动网络</string>
+    <string name="blacklist_notification">拦截来自 %s 的信息</string>
+    <string name="blacklist_notification_private_number">拦截了一个来自私人号码的信息</string>
+    <string name="blacklist_notification_list_private">私人号码</string>
+    <string name="blacklist_notification_unknown_number">拦截了一个来自未知号码 %s 的信息</string>
+    <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> 信息被拦截</string>
+    <string name="unblock_number">解除拦截</string>
+
+    <string name="add_to_blacklist">加入黑名单</string>
+    <string name="add_to_blacklist_message">来自 %s 的信息将被拦截</string>
+
+    <string name="alert_dialog_yes">确定</string>
+    <string name="alert_dialog_no">取消</string>
 </resources>
