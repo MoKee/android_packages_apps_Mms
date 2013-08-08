@@ -958,7 +958,7 @@ public class MessagingNotification {
         if (Settings.System.getInt(context.getContentResolver(),
                 Settings.System.MMS_BREATH, 0) == 1) {
                noti.setSmallIcon(R.drawable.stat_notify_sms_breath);
-           } else {    
+        } else {    
                noti.setSmallIcon(R.drawable.stat_notify_sms);
         }
 

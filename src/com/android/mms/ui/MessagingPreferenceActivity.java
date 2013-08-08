@@ -708,6 +708,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
 	    boolean directCallEnabled = prefs.getBoolean(MessagingPreferenceActivity.DIRECT_CALL,false);
 	    return directCallEnabled;
     }
+
     private void registerListeners() {
         mRingtonePref.setOnPreferenceChangeListener(this);
     }
