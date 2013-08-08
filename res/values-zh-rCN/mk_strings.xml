@@ -35,10 +35,11 @@
     <string name="pref_title_delay_send">延迟发送</string>
     <string name="pref_summary_delay_send">延迟发送短消息，在这期间你可以随时取消发送。</string>
     <string name="delay_duration_title">延迟时间</string>
-    <string name="delay_send_duration_options_entry_1">10 秒 (默认)</string>
-    <string name="delay_send_duration_options_entry_2">20 秒</string>
-    <string name="delay_send_duration_options_entry_3">30 秒</string>
-    <string name="delay_send_duration_options_entry_4">60 秒</string>
+    <string name="delay_send_duration_options_entry_1">5 秒 (默认)</string>
+    <string name="delay_send_duration_options_entry_2">10 秒</string>
+    <string name="delay_send_duration_options_entry_3">20 秒</string>
+    <string name="delay_send_duration_options_entry_4">30 秒</string>
+    <string name="delay_send_duration_options_entry_5">60 秒</string>
     <string name="remaining_delay_time">该消息将在 &lt;font color="red"&gt;&lt;big&gt;%1$d&lt;/big&gt;&lt;/font&gt; 秒后发送</string>
     <string name="sent_countdown">短信发送倒计时</string>
 </resources>
