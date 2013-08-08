@@ -36,10 +36,11 @@
     <string name="pref_title_delay_send">Delay delivery</string>
     <string name="pref_summary_delay_send">Delay the delivery of SMS messages by the specified time, during which you may cancel the message</string>
     <string name="delay_duration_title">Delay duration</string>
-    <string name="delay_send_duration_options_entry_1">10 seconds (Default)</string>
-    <string name="delay_send_duration_options_entry_2">20 seconds</string>
-    <string name="delay_send_duration_options_entry_3">30 seconds</string>
-    <string name="delay_send_duration_options_entry_4">60 seconds</string>
+    <string name="delay_send_duration_options_entry_1">5 seconds (Default)</string>
+    <string name="delay_send_duration_options_entry_2">10 seconds</string>
+    <string name="delay_send_duration_options_entry_3">20 seconds</string>
+    <string name="delay_send_duration_options_entry_4">30 seconds</string>
+    <string name="delay_send_duration_options_entry_5">60 seconds</string>
     <string name="remaining_delay_time">The message will be sent after &lt;font color="red"&gt;&lt;big&gt;%1$d&lt;/big&gt;&lt;/font&gt; seconds</string>
     <string name="sent_countdown">SMS delivery countdown</string>
 </resources>
