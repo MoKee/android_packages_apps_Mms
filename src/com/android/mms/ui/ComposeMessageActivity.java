@@ -5088,6 +5088,8 @@ public class ComposeMessageActivity extends Activity
                     int index = 0;
                     while(index < iTotal) {
                         MessageListItem v = (MessageListItem) mMsgListView.getChildAt(index);
+                        if(v == null)
+                        break;
                         MessageItem listItem = v.getMessageItem();
                         if (item.equals(listItem)) {
                             v.updateDelayCountDown();
