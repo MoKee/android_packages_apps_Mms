@@ -105,5 +105,7 @@
     <string name="add_to_blacklist">加入黑名单</string>
     <string name="add_to_blacklist_message">来自 %s 的信息将被拦截</string>
     <string name="alert_dialog_yes">确定</string>
-    <string name="alert_dialog_no">取消</string>
+    <string name="alert_dialog_no">取消</string> 
+    <string name="storage_is_full">信息数据库已满，请删除一些会话</string>
+    <string name="menu_resend">重新发送</string>
 </resources>
