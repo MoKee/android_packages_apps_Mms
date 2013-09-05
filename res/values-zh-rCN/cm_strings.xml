@@ -108,4 +108,11 @@
     <string name="alert_dialog_no">取消</string> 
     <string name="storage_is_full">信息数据库已满，请删除一些会话</string>
     <string name="menu_resend">重新发送</string>
+    <string name="select_recipients">选择联系人</string>
+    <string name="groups_header">群组</string>
+    <string name="no_recipients">没有找到联系人</string>
+    <string name="no_recipients_mobile_only">没有找到匹配的联系人，请尝试取消\'仅显示手机号码\'过滤。</string>
+    <string name="menu_done">完成</string>
+    <string name="menu_mobile">仅显示手机号码</string>
+    <string name="menu_groups">显示群组</string>
 </resources>
