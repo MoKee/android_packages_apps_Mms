@@ -325,8 +325,8 @@ public class SelectRecipientsList extends ListActivity implements
 
     @Override
     public void onLoaderReset(Loader<ArrayList<RecipientsListLoader.Result>> data) {
-	if (mListAdapter != null) {
+        if (mListAdapter != null) {
             mListAdapter.notifyDataSetInvalidated();
-	}
+        }
     }
 }
