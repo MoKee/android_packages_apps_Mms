@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The MoKee OpenSource Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Gray hint displayed in the search field in Contacts when empty -->
+    <string name="search_bar_hint">"搜索聯絡人"</string>
+    <string name="btn_ok">"確定"</string>
+    <string name="btn_cancel">"取消"</string>
+    <string name="select_all">"全選"</string>
+
+    <!-- Direct Call -->
+    <string name="direct_call_title">體感撥號</string>
+    <string name="direct_call_summary">手機放在耳邊時將撥打當前簡訊聯絡人的電話</string>
+
+    <!-- Message Font size -->
+    <string name="pref_title_mms_message_font_size">消息字體大小</string>
+    <string name="pref_summary_mms_message_font_size">更改消息視圖中的字體大小</string>
+    <string name="pref_dialogtitle_mms_message_font_size">選擇字體大小</string>
+
+    <!--Delay delivery-->
+    <string name="pref_title_delay_send">延遲發送</string>
+    <string name="pref_summary_delay_send">延遲發送短消息，在這期間你可以隨時取消發送。</string>
+    <string name="delay_duration_title">延遲時間</string>
+    <string name="delay_send_duration_options_entry_1">5 秒 (默認)</string>
+    <string name="delay_send_duration_options_entry_2">10 秒</string>
+    <string name="delay_send_duration_options_entry_3">20 秒</string>
+    <string name="delay_send_duration_options_entry_4">30 秒</string>
+    <string name="delay_send_duration_options_entry_5">60 秒</string>
+    <string name="remaining_delay_time">該消息將在 &lt;font color="red"&gt;&lt;big&gt;%1$d&lt;/big&gt;&lt;/font&gt; 秒後發送</string>
+    <string name="sent_countdown">簡訊發送倒計時</string>
+</resources>
