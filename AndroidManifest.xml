@@ -404,6 +404,5 @@
 
          <receiver android:name=".quickmessage.ClearAllReceiver" />
 
-
         </application>
 </manifest>

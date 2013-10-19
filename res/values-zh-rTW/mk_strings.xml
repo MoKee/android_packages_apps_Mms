@@ -31,15 +31,4 @@
     <string name="pref_summary_mms_message_font_size">更改消息視圖中的字體大小</string>
     <string name="pref_dialogtitle_mms_message_font_size">選擇字體大小</string>
 
-    <!--Delay delivery-->
-    <string name="pref_title_delay_send">延遲發送</string>
-    <string name="pref_summary_delay_send">延遲發送短消息，在這期間你可以隨時取消發送。</string>
-    <string name="delay_duration_title">延遲時間</string>
-    <string name="delay_send_duration_options_entry_1">5 秒 (默認)</string>
-    <string name="delay_send_duration_options_entry_2">10 秒</string>
-    <string name="delay_send_duration_options_entry_3">20 秒</string>
-    <string name="delay_send_duration_options_entry_4">30 秒</string>
-    <string name="delay_send_duration_options_entry_5">60 秒</string>
-    <string name="remaining_delay_time">該消息將在 &lt;font color="red"&gt;&lt;big&gt;%1$d&lt;/big&gt;&lt;/font&gt; 秒後發送</string>
-    <string name="sent_countdown">簡訊發送倒計時</string>
 </resources>

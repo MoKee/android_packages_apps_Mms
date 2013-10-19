@@ -369,7 +369,7 @@ public class MessageListItem extends LinearLayout implements
         // If we're in the process of sending a message (i.e. pending), then we show a "SENDING..."
         // string in place of the timestamp.
         if (!sameItem || haveLoadedPdu) {
-            if (MessagingPreferenceActivity.getDelaySendMessageEnabled(mContext)
+            if (MessagingPreferenceActivity.getMessageSendDelayDuration(mContext) > 0
                     && mMessageItem.getCountDown() > 0) {
                 mDateView.setText(buildTimestampLine(mMessageItem.isSending() ?
                         mContext.getResources().getString(R.string.sent_countdown) :
@@ -638,10 +638,8 @@ public class MessageListItem extends LinearLayout implements
 
     public void onMessageListItemClick() {
         if (mMessageItem != null && mMessageItem.isSending() && mMessageItem.isSms()) {
-            if (mMessageItem.mMessageUri.equals(SmsReceiverService.mCurrentSendingUri)) {
-                SmsReceiverService.cancelSendingMessage();
-                return;
-            }
+            SmsReceiverService.cancelSendingMessage(mMessageItem.mMessageUri);
+            return;
         }
 
         // If the message is a failed one, clicking it should reload it in the compose view,
@@ -877,15 +875,15 @@ public class MessageListItem extends LinearLayout implements
 
     public void updateDelayCountDown() {
         if (mMessageItem.isSms() && mMessageItem.getCountDown() > 0 && mMessageItem.isSending()) {
-            String content = String.format(mContext.getResources()
-                    .getString(R.string.remaining_delay_time), mMessageItem.getCountDown());
-            content = buildTimestampLine(content);
-            Spanned spanned = Html.fromHtml(content);
+            String content = mContext.getResources().getQuantityString(
+                    R.plurals.remaining_delay_time,
+                    mMessageItem.getCountDown(), mMessageItem.getCountDown());
+            Spanned spanned = Html.fromHtml(buildTimestampLine(content));
             mDateView.setText(spanned);
         } else {
-            mDateView.setText(buildTimestampLine(mMessageItem.isSending() ?
-                    mContext.getResources().getString(R.string.sending_message) :
-                    mMessageItem.mTimestamp));
+            mDateView.setText(buildTimestampLine(mMessageItem.isSending()
+                    ? mContext.getResources().getString(R.string.sending_message)
+                    : mMessageItem.mTimestamp));
         }
     }
 }

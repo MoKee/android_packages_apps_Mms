@@ -52,21 +52,14 @@
     <PreferenceCategory android:title="@string/pref_sms_settings_title"
         android:key="pref_key_sms_settings" >
 
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="pref_key_delay_send"
-            android:summary="@string/pref_summary_delay_send"
-            android:title="@string/pref_title_delay_send" />
-
         <ListPreference
-            android:key="pref_delay_send_duration"
+            android:key="pref_key_send_delay"
             android:persistent="true"
-            android:dependency="pref_key_delay_send"
-            android:dialogTitle="@string/delay_duration_title"
-            android:title="@string/delay_duration_title"
-            android:entries="@array/delay_send_duration_entries"
-            android:entryValues="@array/delay_send_duration_values"
-            android:defaultValue="10000"/>
+            android:dialogTitle="@string/pref_title_send_delay"
+            android:title="@string/pref_title_send_delay"
+            android:entries="@array/send_delay_duration_entries"
+            android:entryValues="@array/send_delay_duration_values"
+            android:defaultValue="0"/>
 
         <CheckBoxPreference
             android:defaultValue="false"
@@ -230,7 +223,7 @@
             android:title="@string/direct_call_title"
             android:summary="@string/direct_call_summary" 
 	    android:defaultValue="false" />
-	    
+
         <ListPreference
             android:key="pref_key_mms_message_font_size"
             android:defaultValue="18"
