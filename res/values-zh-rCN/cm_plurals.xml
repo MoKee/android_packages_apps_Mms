@@ -19,7 +19,7 @@
         <item quantity="other"><xliff:g id="number" example="15">%1$s</xliff:g> 个模板将会被删除.</item>
     </plurals>
     <plurals name="remaining_delay_time">
-        <item quantity="one">1 秒后发送, 触摸取消.</item>
-        <item quantity="other">%1$d 秒后发送, 触摸取消.</item>
+        <item quantity="one">将会在 1 秒内发送, 点击取消发送.</item>
+        <item quantity="other">将会在 %1$d 秒内发送, 点击取消发送.</item>
     </plurals>
 </resources>
