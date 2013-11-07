@@ -18,12 +18,9 @@
 package com.android.mms.ui;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.mokee.location.PhoneLocation;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -42,8 +39,6 @@ import com.android.mms.R;
 import com.android.mms.data.Contact;
 import com.android.mms.data.ContactList;
 import com.android.mms.data.Conversation;
-import com.android.mms.util.EmojiParser;
-import com.android.mms.util.SmileyParser;
 
 /**
  * This class manages the view for given conversation.
@@ -56,7 +51,6 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
     private TextView mSubjectView;
     private TextView mFromView;
     private TextView mDateView;
-    private TextView mLocationView;
     private View mAttachmentView;
     private View mErrorIndicator;
     private QuickContactBadge mAvatarView;
@@ -90,7 +84,6 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
         mSubjectView = (TextView) findViewById(R.id.subject);
 
         mDateView = (TextView) findViewById(R.id.date);
-        mLocationView = (TextView) findViewById(R.id.location);
         mAttachmentView = findViewById(R.id.attachment);
         mErrorIndicator = findViewById(R.id.error);
         mAvatarView = (QuickContactBadge) findViewById(R.id.avatar);
@@ -209,27 +202,13 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
         // Register for updates in changes of any of the contacts in this conversation.
         ContactList contacts = conversation.getRecipients();
 
-        //Location
-        if(mContext.getResources().getConfiguration().locale.getCountry().equals("CN")||mContext.getResources().getConfiguration().locale.getCountry().equals("TW")) {
-        	mLocationView.setText(PhoneLocation.getCityFromPhone(contacts.get(0).getNumber()));
-        }
-
         if (Log.isLoggable(LogTag.CONTACT, Log.DEBUG)) {
             Log.v(TAG, "bind: contacts.addListeners " + this);
         }
         Contact.addListener(this);
 
         // Subject
-        SmileyParser parser = SmileyParser.getInstance();
-        CharSequence smileySubject = parser.addSmileySpans(conversation.getSnippet());
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(mContext);
-        boolean enableEmojis = prefs.getBoolean(MessagingPreferenceActivity.ENABLE_EMOJIS, false);
-        if(enableEmojis) {
-            EmojiParser emojiParser = EmojiParser.getInstance();
-            smileySubject = emojiParser.addEmojiSpans(smileySubject);
-        }
-        mSubjectView.setText(smileySubject);
+        mSubjectView.setText(conversation.getSnippet());
         LayoutParams subjectLayout = (LayoutParams)mSubjectView.getLayoutParams();
         // We have to make the subject left of whatever optional items are shown on the right.
         subjectLayout.addRule(RelativeLayout.LEFT_OF, hasAttachment ? R.id.attachment :
