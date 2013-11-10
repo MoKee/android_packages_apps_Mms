@@ -171,7 +171,7 @@ import com.google.android.mms.pdu.SendReq;
  */
 public class ComposeMessageActivity extends Activity
         implements View.OnClickListener, TextView.OnEditorActionListener,
-        MessageStatusListener, Contact.UpdateListener, SensorEventListener {
+        MessageStatusListener, Contact.UpdateListener {
     public static final int REQUEST_CODE_ATTACH_IMAGE     = 100;
     public static final int REQUEST_CODE_TAKE_PICTURE     = 101;
     public static final int REQUEST_CODE_ATTACH_VIDEO     = 102;
@@ -317,6 +317,9 @@ public class ComposeMessageActivity extends Activity
 
     // Direct call
     private SensorManager mSensorManager;
+    private Sensor mProximitySensor;
+    private Sensor mAccelerometer;
+    private Sensor mMagnetometer;
     private int SensorOrientationY;
     private int SensorProximity;
     private boolean initProx;
@@ -1897,50 +1900,73 @@ public class ComposeMessageActivity extends Activity
         }
     }
 
-    @Override
-    public void onSensorChanged(SensorEvent event) {
+    private void registerSensorListener(Sensor sensor) {
+        if (sensor != null)
+            mSensorManager.registerListener(mSensorListener, sensor, SensorManager.SENSOR_DELAY_UI);
+    }
 
-        switch (event.sensor.getType()) {
-        case Sensor.TYPE_ORIENTATION:
-            SensorOrientationY = (int) event.values[SensorManager.DATA_Y];
-            break;
-        case Sensor.TYPE_PROXIMITY:
-            int currentProx = (int) event.values[0];
-            if (initProx) {
+    private void unregisterSensorListener(Sensor sensor) {
+        if (sensor != null)
+            mSensorManager.unregisterListener(mSensorListener, sensor);
+    }
+
+    private SensorEventListener mSensorListener = new SensorEventListener() {
+        float[] mGravity;
+        float[] mGeomagnetic;
+
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            float value = event.values[0];
+            if (event.sensor.equals(mProximitySensor)) {
+                int currentProx = (int) value;
+                if (initProx) {
+                    SensorProximity = currentProx;
+                    initProx = false;
+                } else {
+                    if( SensorProximity > 0 && currentProx <= 3){
+                        proxChanged = true;
+                    }
+                }
                 SensorProximity = currentProx;
-                initProx = false;
-            } else {
-                if (SensorProximity > 0 && currentProx <= 5){
-                    proxChanged = true;
+            } else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+                mGravity = event.values;
+            } else if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+                mGeomagnetic = event.values;
+            }
+            if (mGravity != null && mGeomagnetic != null) {
+                float R[] = new float[9];
+                float I[] = new float[9];
+                boolean success = SensorManager.getRotationMatrix(R, I, mGravity, mGeomagnetic);
+                if (success) {
+                    float orientation[] = new float[3];
+                    SensorManager.getOrientation(R, orientation);
+                    SensorOrientationY = (int) (orientation[1] * 180f / Math.PI);
                 }
             }
-            SensorProximity = currentProx;
-            break;
-        }
+            if (rightOrientation(SensorOrientationY) && SensorProximity <= 3 && proxChanged ) {
+                if (getRecipients().isEmpty() == false) {
+                    // unregister Listener to don't let the onSesorChanged run the
+                    // whole time
+                    unregisterSensorListener(mProximitySensor);
+                    unregisterSensorListener(mAccelerometer);
+                    unregisterSensorListener(mMagnetometer);
 
-        if (rightOrientation(SensorOrientationY) && SensorProximity <= 5 && proxChanged ) {
-            if (getRecipients().isEmpty() == false) {
-	        // unregister Listener to don't let the onSesorChanged run the
-	        // whole time
-            mSensorManager.unregisterListener(this, mSensorManager
-                    .getDefaultSensor(Sensor.TYPE_ORIENTATION));
-            mSensorManager.unregisterListener(this,
-                    mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY));
-
-            // get number and attach it to an Intent.ACTION_CALL, then start
-            // the Intent
-            String number = getRecipients().get(0).getNumber();
-            Intent dialIntent = new Intent(Intent.ACTION_CALL);
-            dialIntent.setData(Uri.fromParts("tel", number, null));
-            dialIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(dialIntent);
+                    // get number and attach it to an Intent.ACTION_CALL, then start
+                    // the Intent
+                    String number = getRecipients().get(0).getNumber();
+                    Intent dialIntent = new Intent(Intent.ACTION_CALL);
+                    dialIntent.setData(Uri.fromParts("tel", number, null));
+                    dialIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(dialIntent);
+                }
             }
         }
-    }
 
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+        }
+    };
 
     public boolean rightOrientation(int orientation) {
         if (orientation < -50 && orientation > -130) {
@@ -2337,18 +2363,18 @@ public class ComposeMessageActivity extends Activity
 
         try {
             TelephonyManager tm = (TelephonyManager)getSystemService(Service.TELEPHONY_SERVICE);
-            if (MessagingPreferenceActivity.getDirectCallEnabled(ComposeMessageActivity.this) && tm.getCallState() == TelephonyManager.CALL_STATE_IDLE) {
+            if (MessagingPreferenceActivity.getDirectCallEnabled(this) && tm.getCallState() == TelephonyManager.CALL_STATE_IDLE) {
+                mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+                mProximitySensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+                mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+                mMagnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
                 SensorOrientationY = 0;
                 SensorProximity = 0;
                 proxChanged = false;
                 initProx = true;
-                mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-                mSensorManager.registerListener(this,
-                        mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
-                        SensorManager.SENSOR_DELAY_UI);
-                mSensorManager.registerListener(this,
-                        mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY),
-                        SensorManager.SENSOR_DELAY_UI);
+                registerSensorListener(mProximitySensor);
+                registerSensorListener(mAccelerometer);
+                registerSensorListener(mMagnetometer);
             }
         } catch (Exception e) {
             Log.w("ERROR", e.toString());
@@ -2377,11 +2403,10 @@ public class ComposeMessageActivity extends Activity
         removeRecipientsListeners();
 
         try {
-            if (MessagingPreferenceActivity.getDirectCallEnabled(ComposeMessageActivity.this)) {
-                mSensorManager.unregisterListener(this,
-                        mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION));
-                mSensorManager.unregisterListener(this,
-                        mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY));
+            if (MessagingPreferenceActivity.getDirectCallEnabled(this)) {
+                unregisterSensorListener(mProximitySensor);
+                unregisterSensorListener(mAccelerometer);
+                unregisterSensorListener(mMagnetometer);
             }
         } catch (Exception e) {
             Log.w("ERROR", e.toString());
