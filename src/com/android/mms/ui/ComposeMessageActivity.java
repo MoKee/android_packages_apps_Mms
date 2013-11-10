@@ -1910,7 +1910,7 @@ public class ComposeMessageActivity extends Activity
                 SensorProximity = currentProx;
                 initProx = false;
             } else {
-                if (SensorProximity > 0 && currentProx <= 3){
+                if (SensorProximity > 0 && currentProx <= 5){
                     proxChanged = true;
                 }
             }
@@ -1918,14 +1918,14 @@ public class ComposeMessageActivity extends Activity
             break;
         }
 
-        if (rightOrientation(SensorOrientationY) && SensorProximity <= 3 && proxChanged ) {
+        if (rightOrientation(SensorOrientationY) && SensorProximity <= 5 && proxChanged ) {
             if (getRecipients().isEmpty() == false) {
 	        // unregister Listener to don't let the onSesorChanged run the
 	        // whole time
             mSensorManager.unregisterListener(this, mSensorManager
-                        .getDefaultSensor(Sensor.TYPE_ORIENTATION));
+                    .getDefaultSensor(Sensor.TYPE_ORIENTATION));
             mSensorManager.unregisterListener(this,
-                        mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY));
+                    mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY));
 
             // get number and attach it to an Intent.ACTION_CALL, then start
             // the Intent
