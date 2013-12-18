@@ -261,7 +261,7 @@ public class SelectRecipientsList extends ListActivity implements
 
         // Create and set the list adapter
         if (data != null) {
-        mListAdapter = new SelectRecipientsListAdapter(this, data);
+            mListAdapter = new SelectRecipientsListAdapter(this, data);
         }
 
         if (getIntent() != null) {
