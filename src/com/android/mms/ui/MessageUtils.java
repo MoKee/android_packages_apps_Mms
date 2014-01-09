@@ -1285,9 +1285,9 @@ public class MessageUtils {
         Log.d(TAG, "[MsgUtils] " + msg);
     }
 
-    public static boolean isCyanogenMod(Context context) {
+    public static boolean isMoKee(Context context) {
         try {
-            String version = SystemProperties.get("ro.cm.version");
+            String version = SystemProperties.get("ro.mk.version");
             if (!version.isEmpty()) {
                 return true;
             }
