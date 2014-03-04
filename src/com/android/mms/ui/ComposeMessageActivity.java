@@ -4846,6 +4846,8 @@ public class ComposeMessageActivity extends Activity
         builder.setIcon(R.drawable.ic_contact_picture);
         builder.setTitle(displayName);
 
+        final String contactName = displayName;
+
         builder.setMultiChoiceItems(entries, null, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
@@ -4857,10 +4859,14 @@ public class ComposeMessageActivity extends Activity
                 new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                int start = mTextEditor.getSelectionStart();
+                int end = mTextEditor.getSelectionEnd();
+                mTextEditor.getText().replace(
+                    Math.min(start, end), Math.max(start, end), contactName + "\n");
                 for (int i = 0; i < entries.length; i++) {
                     if (itemsChecked[i]) {
-                        int start = mTextEditor.getSelectionStart();
-                        int end = mTextEditor.getSelectionEnd();
+                        start = mTextEditor.getSelectionStart();
+                        end = mTextEditor.getSelectionEnd();
                         mTextEditor.getText().replace(
                                 Math.min(start, end), Math.max(start, end), entries[i] + "\n");
                     }
