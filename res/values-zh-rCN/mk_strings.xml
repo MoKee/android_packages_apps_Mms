@@ -26,4 +26,9 @@
     <string name="pref_summary_mms_message_font_size">更改消息视图中的字体大小</string>
     <string name="pref_dialogtitle_mms_message_font_size">选择字体大小</string>
 
+    <!-- Insert contact information -->
+    <string name="menu_insert_contact_info">插入联系人信息</string>
+    <string name="cannot_find_contact">无法插入已选择的联系人信息</string>
+    <string name="insert_contact_info_positive_button">插入</string>
+
 </resources>
