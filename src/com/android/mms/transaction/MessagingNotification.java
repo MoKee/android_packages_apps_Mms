@@ -1301,7 +1301,6 @@ public class MessagingNotification {
         }
 
         TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(context);
-        taskStackBuilder.setTaskOnHome(false);
         if (allFailedInSameThread) {
             failedIntent = new Intent(context, ComposeMessageActivity.class);
             if (isDownload) {
