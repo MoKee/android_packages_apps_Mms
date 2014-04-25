@@ -20,8 +20,6 @@ package com.android.mms.ui;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.mokee.location.PhoneLocation;
-import android.mokee.util.MoKeeUtils;
 import android.os.Handler;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -41,6 +39,9 @@ import com.android.mms.R;
 import com.android.mms.data.Contact;
 import com.android.mms.data.ContactList;
 import com.android.mms.data.Conversation;
+
+import org.mokee.location.PhoneLocation;
+import org.mokee.util.MoKeeUtils;
 
 /**
  * This class manages the view for given conversation.
