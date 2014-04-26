@@ -97,6 +97,7 @@
   <string name="menu_done">完成</string>
   <string name="menu_mobile">仅限手机号码</string>
   <string name="menu_groups">显示组</string>
+  <string name="fastscroll_index_groups">组</string>
   <string name="pref_title_send_delay">延迟发送短信</string>
   <string name="send_delay_immediate">立即发送</string>
   <string name="send_delay_3seconds">3 秒</string>
