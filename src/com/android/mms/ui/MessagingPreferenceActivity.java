@@ -74,6 +74,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String RETRIEVAL_DURING_ROAMING = "pref_key_mms_retrieval_during_roaming";
     public static final String AUTO_DELETE              = "pref_key_auto_delete";
     public static final String GROUP_MMS_MODE           = "pref_key_mms_group_mms";
+    public static final String ENABLE_EMOTICONS         = "pref_key_enable_emoticons";
 
     // Direct call
     public static final String DIRECT_CALL              = "pref_key_mms_direct_call";
@@ -147,6 +148,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     private CheckBoxPreference mVibratePref;
     private CheckBoxPreference mEnableNotificationsPref;
     private CheckBoxPreference mEnablePrivacyModePref;
+    private CheckBoxPreference mEnableEmoticonsPref;
     private CheckBoxPreference mMmsAutoRetrievialPref;
     private RingtonePreference mRingtonePref;
     private Recycler mSmsRecycler;
