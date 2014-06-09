@@ -4866,7 +4866,6 @@ public class ComposeMessageActivity extends Activity
         final boolean[] itemsChecked = new boolean[entries.length];
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setIcon(R.drawable.ic_contact_picture);
         builder.setTitle(displayName);
 
         final String contactName = displayName;
