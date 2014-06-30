@@ -164,7 +164,10 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
             }
         } else {
             // TODO get a multiple recipients asset (or do something else)
-            avatarDrawable = sDefaultContactImage;
+            String multiKey = mConversation.getRecipients().formatNames(", ");
+            DefaultImageRequest defaultImageRequest = new DefaultImageRequest(null, multiKey);
+            avatarDrawable = ContactPhotoManager.getDefaultAvatarDrawableForContact(
+                mContext.getResources(), false, defaultImageRequest);
             mAvatarView.assignContactUri(null);
         }
         mAvatarView.setImageDrawable(avatarDrawable);
