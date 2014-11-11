@@ -4,3 +4,4 @@
  -keep class com.android.mms.ui.SlideshowPresenter {
 *;
 }
+
