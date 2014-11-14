@@ -16,4 +16,11 @@
 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="direct_call_title">Прямой звонок</string>
+  <string name="direct_call_summary">Подняв трубку называет текущий контакт</string>
+  <string name="pref_title_mms_message_font_size">Размер шрифта сообщения</string>
+  <string name="pref_summary_mms_message_font_size">Изменить размер шрифта для просмотра сообщений</string>
+  <string name="pref_dialogtitle_mms_message_font_size">Выберите размер шрифта</string>
+  <string name="menu_insert_contact_info">введите контактную информацию</string>
+  <string name="cannot_find_contact">Не удается вставить информацию выбранного контакта</string>
+  <string name="insert_contact_info_positive_button">Вставить</string>
 </resources>

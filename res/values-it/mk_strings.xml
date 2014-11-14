@@ -15,6 +15,12 @@
      limitations under the License.
 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="direct_call_title">Chiamata veloce</string>
+  <string name="direct_call_summary">alzare il telefono chiama il contatto attuale</string>
   <string name="pref_title_mms_message_font_size">Dimensione dei caratteri dei messaggi</string>
+  <string name="pref_summary_mms_message_font_size">Modificare la dimensione del carattere di visualizzazione messaggio</string>
   <string name="pref_dialogtitle_mms_message_font_size">Seleziona la dimensione del carattere</string>
+  <string name="menu_insert_contact_info">Inserire informazioni di contatto</string>
+  <string name="cannot_find_contact">Non è possibile inserire le informazioni del contatto scelto</string>
+  <string name="insert_contact_info_positive_button">Inserire</string>
 </resources>

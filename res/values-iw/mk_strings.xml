@@ -15,10 +15,12 @@
      limitations under the License.
 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="pref_title_mms_message_font_size">Розмір шрифту повідомлення</string>
-  <string name="pref_summary_mms_message_font_size">Змінити розмір шрифту для перегляду повідомлень</string>
-  <string name="pref_dialogtitle_mms_message_font_size">Виберіть розмір шрифту</string>
-  <string name="menu_insert_contact_info">Вставити контактні дані</string>
-  <string name="cannot_find_contact">Не можна вставити дані обраного контакту</string>
-  <string name="insert_contact_info_positive_button">Вставити</string>
+  <string name="direct_call_title">שיחה ישירה</string>
+  <string name="direct_call_summary">ענה לשיחות של האיש קשר הנוכחי</string>
+  <string name="pref_title_mms_message_font_size">גודל גופן הודעה</string>
+  <string name="pref_summary_mms_message_font_size">לשנות את גודל הגופן של תצוגת הודעה</string>
+  <string name="pref_dialogtitle_mms_message_font_size">בחר גודל גופן</string>
+  <string name="menu_insert_contact_info">הוספת מידע ליצירת קשר</string>
+  <string name="cannot_find_contact">אין אפשרות להוסיף מידע לאיש הקשר שבחרת</string>
+  <string name="insert_contact_info_positive_button">הוספה</string>
 </resources>

@@ -16,6 +16,7 @@
 -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="direct_call_title">Doğrudan Arama</string>
+  <string name="direct_call_summary">Telefondu kaldırmak şimdiki kişiyi arar</string>
   <string name="pref_title_mms_message_font_size">İleti yazı tipi boyutu</string>
   <string name="pref_summary_mms_message_font_size">İleti görünümü yazı tipi boyutunu değiştirme</string>
   <string name="pref_dialogtitle_mms_message_font_size">Yazı tipi boyutunu seçin</string>
