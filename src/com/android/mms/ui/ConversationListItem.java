@@ -213,7 +213,7 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
         ContactList contacts = conversation.getRecipients();
 
         // Location
-        if (MoKeeUtils.isChineseLanguage(true)) {
+        if (MoKeeUtils.isSupportLanguage(true)) {
             mLocationView.setText(PhoneLocation.getCityFromPhone((CharSequence)contacts.get(0).getNumber()));
         }
 
